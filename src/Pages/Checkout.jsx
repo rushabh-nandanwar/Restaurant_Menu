@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { ArrowLeft, ShoppingBag, Plus, Minus, Trash2 } from 'lucide-react';
+import { ArrowLeft, ShoppingBag } from 'lucide-react';
 
 const Checkout = () => {
     const navigate = useNavigate();
-    const { cart, updateQuantity, removeItem, clearCart } = useCart();
+    const { cart, clearCart } = useCart();
 
     const cartItems = Object.values(cart);
     const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -48,22 +48,13 @@ const Checkout = () => {
                         <ArrowLeft size={20} />
                         Back to Menu
                     </button>
-                    <h1 className="text-4xl md:text-5xl font-black mb-2">Checkout</h1>
+                    <h1 className="text-4xl md:text-5xl font-black mb-2">Complete Order</h1>
                     <p className="text-zinc-400">Review your order before placing</p>
                 </div>
 
                 {/* Order Items */}
                 <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10 mb-6">
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-2xl font-bold">Your Order</h2>
-                        <button
-                            onClick={clearCart}
-                            className="text-zinc-400 hover:text-red-500 transition-colors flex items-center gap-2"
-                        >
-                            <Trash2 size={18} />
-                            Clear All
-                        </button>
-                    </div>
+                    <h2 className="text-2xl font-bold mb-6">Your Order</h2>
 
                     <div className="space-y-4">
                         {cartItems.map((item) => (
@@ -79,20 +70,8 @@ const Checkout = () => {
                                     <p className="text-orange-500 font-bold">${item.price.toFixed(2)} each</p>
                                 </div>
                                 <div className="flex flex-col items-end justify-between">
-                                    <div className="flex items-center gap-2">
-                                        <button
-                                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                            className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
-                                        >
-                                            <Minus size={14} className="text-white" />
-                                        </button>
-                                        <span className="font-bold w-8 text-center">{item.quantity}</span>
-                                        <button
-                                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                            className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center hover:bg-orange-600 transition-colors"
-                                        >
-                                            <Plus size={14} className="text-white" />
-                                        </button>
+                                    <div className="px-3 py-1 bg-white/10 rounded-full">
+                                        <span className="text-sm font-semibold text-zinc-300">Qty: {item.quantity}</span>
                                     </div>
                                     <p className="text-xl font-bold">${(item.price * item.quantity).toFixed(2)}</p>
                                 </div>
@@ -128,16 +107,6 @@ const Checkout = () => {
                     >
                         <ArrowLeft size={20} />
                         Add Another Item
-                    </button>
-                    <button
-                        onClick={() => {
-                            alert('Order placed successfully! 🎉');
-                            clearCart();
-                            navigate('/');
-                        }}
-                        className="flex-1 py-4 bg-linear-to-r from-orange-500 to-red-600 text-white rounded-2xl font-bold hover:shadow-lg hover:shadow-orange-500/30 transition-all"
-                    >
-                        Place Order - ${total.toFixed(2)}
                     </button>
                 </div>
             </div>

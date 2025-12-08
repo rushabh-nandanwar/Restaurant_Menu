@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useCart } from '../../context/CartContext';
 import { menuItems } from '../../data/menuItems';
 import MenuItem from './MenuItem';
 import CategoryFilter from './CategoryFilter';
@@ -8,7 +9,7 @@ import { Search, UtensilsCrossed } from 'lucide-react';
 const Menu = () => {
     const [activeCategory, setActiveCategory] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
-    const [cart, setCart] = useState({});
+    const { cart, addToCart, updateQuantity, removeItem, clearCart } = useCart();
 
     const categories = ['All', ...new Set(menuItems.map(item => item.category))];
 
@@ -20,41 +21,6 @@ const Menu = () => {
             return matchesCategory && matchesSearch;
         });
     }, [activeCategory, searchQuery]);
-
-    // Cart functions
-    const handleAddToCart = (item) => {
-        setCart(prev => ({
-            ...prev,
-            [item.id]: { ...item, quantity: 1 }
-        }));
-    };
-
-    const handleUpdateQuantity = (itemId, newQuantity) => {
-        if (newQuantity <= 0) {
-            setCart(prev => {
-                const newCart = { ...prev };
-                delete newCart[itemId];
-                return newCart;
-            });
-        } else {
-            setCart(prev => ({
-                ...prev,
-                [itemId]: { ...prev[itemId], quantity: newQuantity }
-            }));
-        }
-    };
-
-    const handleRemoveItem = (itemId) => {
-        setCart(prev => {
-            const newCart = { ...prev };
-            delete newCart[itemId];
-            return newCart;
-        });
-    };
-
-    const handleClearCart = () => {
-        setCart({});
-    };
 
     return (
         <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-orange-500/30 pb-32 md:pb-0">
@@ -85,7 +51,7 @@ const Menu = () => {
                     </h1>
 
                     <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed font-light">
-                       ~ The Taste of Saoji Tradition
+                        ~ The Taste of Saoji Tradition
                     </p>
                 </div>
             </div>
@@ -136,8 +102,8 @@ const Menu = () => {
                                             <MenuItem
                                                 item={item}
                                                 cartQuantity={cart[item.id]?.quantity || 0}
-                                                onAddToCart={handleAddToCart}
-                                                onUpdateQuantity={handleUpdateQuantity}
+                                                onAddToCart={addToCart}
+                                                onUpdateQuantity={updateQuantity}
                                             />
                                         </div>
                                     );
@@ -156,9 +122,9 @@ const Menu = () => {
                     <div className="hidden md:block md:col-span-1">
                         <CartList
                             cart={cart}
-                            onUpdateQuantity={handleUpdateQuantity}
-                            onRemoveItem={handleRemoveItem}
-                            onClearCart={handleClearCart}
+                            onUpdateQuantity={updateQuantity}
+                            onRemoveItem={removeItem}
+                            onClearCart={clearCart}
                         />
                     </div>
                 </div>
@@ -167,9 +133,9 @@ const Menu = () => {
             {/* Cart List - Mobile Only (Fixed Bottom) */}
             <CartList
                 cart={cart}
-                onUpdateQuantity={handleUpdateQuantity}
-                onRemoveItem={handleRemoveItem}
-                onClearCart={handleClearCart}
+                onUpdateQuantity={updateQuantity}
+                onRemoveItem={removeItem}
+                onClearCart={clearCart}
             />
         </div>
     );

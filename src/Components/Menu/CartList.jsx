@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Trash2, ShoppingBag, X, Minus, Plus } from 'lucide-react';
 
 const CartList = ({ cart, onUpdateQuantity, onRemoveItem, onClearCart }) => {
+    const navigate = useNavigate();
     const totalItems = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = Object.values(cart).reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
@@ -73,10 +75,10 @@ const CartList = ({ cart, onUpdateQuantity, onRemoveItem, onClearCart }) => {
                             <p className="text-xl font-bold text-white">${totalPrice.toFixed(2)}</p>
                         </div>
                         <div className="flex gap-2">
-                            <button className="px-4 py-2 bg-white/10 text-white rounded-full text-sm font-semibold hover:bg-white/20 transition-colors">
-                                Save
-                            </button>
-                            <button className="px-6 py-2 bg-linear-to-r from-orange-500 to-red-600 text-white rounded-full text-sm font-bold hover:shadow-lg hover:shadow-orange-500/30 transition-all">
+                            <button
+                                onClick={() => navigate('/checkout')}
+                                className="px-6 py-2 bg-linear-to-r from-orange-500 to-red-600 text-white rounded-full text-sm font-bold hover:shadow-lg hover:shadow-orange-500/30 transition-all"
+                            >
                                 Checkout
                             </button>
                         </div>
@@ -149,7 +151,10 @@ const CartList = ({ cart, onUpdateQuantity, onRemoveItem, onClearCart }) => {
                         <button className="w-full py-3 bg-white/10 text-white rounded-xl font-semibold hover:bg-white/20 transition-colors">
                             Save for Later
                         </button>
-                        <button className="w-full py-3 bg-linear-to-r from-orange-500 to-red-600 text-white rounded-xl font-bold hover:shadow-lg hover:shadow-orange-500/30 transition-all">
+                        <button
+                            onClick={() => navigate('/checkout')}
+                            className="w-full py-3 bg-linear-to-r from-orange-500 to-red-600 text-white rounded-xl font-bold hover:shadow-lg hover:shadow-orange-500/30 transition-all"
+                        >
                             Proceed to Checkout
                         </button>
                     </div>
