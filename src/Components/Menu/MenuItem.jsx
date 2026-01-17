@@ -11,19 +11,19 @@ const MenuItem = ({ item, cartQuantity = 0, onAddToCart, onUpdateQuantity }) => 
                     alt={item.name}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute top-3 right-3 z-20 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-lg">
-                    <span className="text-white font-bold tracking-wide text-sm">${item.price.toFixed(2)}</span>
+                <div className="absolute top-2 right-2 z-20 bg-zinc-900/80 backdrop-blur-md px-2 py-1 rounded-lg border border-white/10 shadow-lg">
+                    <span className="text-white font-bold tracking-tight text-[10px] md:text-sm">${item.price.toFixed(2)}</span>
                 </div>
             </div>
 
             <div className="p-4 md:p-6 flex flex-col grow relative z-20">
                 <div className="mb-2">
-                    <h3 className="text-base md:text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-orange-400 group-hover:to-red-500 transition-all duration-300 line-clamp-1">
+                    <h3 className="text-sm md:text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-orange-400 group-hover:to-red-500 transition-all duration-300 line-clamp-1">
                         {item.name}
                     </h3>
                 </div>
 
-                <p className="text-zinc-400 text-xs md:text-sm leading-relaxed mb-4 grow font-light line-clamp-2">
+                <p className="text-zinc-500 text-[10px] md:text-sm leading-relaxed mb-4 grow font-light line-clamp-2 md:line-clamp-3">
                     {item.description}
                 </p>
 

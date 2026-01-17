@@ -42,7 +42,7 @@ const Checkout = () => {
                 {/* Header */}
                 <div className="mb-8">
                     <button
-                        onClick={() => navigate('/')}
+                        onClick={() => navigate('/', { state: { view: 'items', category: 'All' } })}
                         className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors mb-4"
                     >
                         <ArrowLeft size={20} />
@@ -102,7 +102,7 @@ const Checkout = () => {
                 {/* Action Buttons */}
                 <div className="flex flex-col md:flex-row gap-4">
                     <button
-                        onClick={() => navigate('/')}
+                        onClick={() => navigate('/', { state: { view: 'items', category: 'All' } })}
                         className="flex-1 py-4 bg-white/10 text-white rounded-2xl font-semibold hover:bg-white/20 transition-colors flex items-center justify-center gap-2"
                     >
                         <ArrowLeft size={20} />
