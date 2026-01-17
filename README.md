@@ -1,21 +1,86 @@
-<<<<<<< HEAD
-# React + Vite
+# Nandu Saoji Bhojnalaya 🌶️
+### *Authentic Saoji Tradition Since 2008*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, highly-interactive digital menu experience built for Nandu Saoji Bhojnalaya. Designed with a cinematic dark aesthetic, glassmorphism, and seamless ordering flows.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Key Features
 
-## React Compiler
+- **🎬 Cinematic Multi-Stage Experience**: A smooth transition from an immersive landing page to a 3-column category grid, followed by an interactive menu display.
+- **🛒 Smart Order System**: A real-time cart/list system with quantity controls and a breakdown of the final order (tax, subtotal).
+- **📱 Ultra-Responsive Design**: Optimised for every device. Features a unique 3-column category grid on mobile and bento-box item layouts.
+- **🔍 Intelligent Filtering**: Instant search and category-based filtering (Papad, Roti, Chicken, Thali, etc.) for a frictionless user journey.
+- **💎 Premium Aesthetics**: Rich dark mode, orange-to-red gradients, glassmorphism, and subtle micro-animations using Tailwind CSS v4 and Framer-like transition effects.
+- **🔗 Deep Navigation**: Smart linking that remembers your position, allowing you to jump from Checkout directly back to the active menu items.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# Restaurant_Menu
-This is the digital menu for the Nandu Saoji Bhojnalaya
->>>>>>> 887a0984e28e3aec454c92caae2b7ce9a56d9ee9
+- **Framework**: [React.js](https://reactjs.org/) (Vite)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **State Management**: React context API (CartContext)
+- **Routing**: [React Router v6](https://reactrouter.com/)
+- **Typography**: Inter (Modern Sans-Serif)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/rushabh-nandanwar/Restaurant_Menu.git
+   cd restaurantMenu
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── Components/
+│   └── Menu/
+│       ├── Menu.jsx           # Main orchestrator (Landing, Categories, Items)
+│       ├── MenuItem.jsx       # Individual dish cards
+│       ├── CategoryFilter.jsx # Pill-based horizontal filters
+│       └── CartList.jsx       # Floating cart (Mobile) & Sidebar (Desktop)
+├── Pages/
+│   └── Checkout.jsx           # Order summary & Checkout experience
+├── context/
+│   └── CartContext.jsx        # Global cart state management
+├── data/
+│   └── menuItems.js           # Digital menu catalog (Prices, Images, Categories)
+└── index.css                  # Custom animations and global styles
+```
+
+---
+
+## 📸 Branding
+
+The digital menu incorporates the official **NSB Logo** and follows the heritage established by Nandu Saoji Bhojnalaya. Every color and shadow is crafted to reflect the spice and vibrancy of Saoji cuisine.
+
+---
+
+## 👤 Credits
+
+Developed with ❤️ for **Nandu Saoji Bhojnalaya**.
+*Copyright © 2025 - All Rights Reserved.*
